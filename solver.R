@@ -11,6 +11,7 @@ ui <- shinyUI(fluidPage(theme=shinytheme("cosmo"),
    
    titlePanel("Quadratic equation solver"),
    HTML("This aplication will solve quadratic equation having the form <strong>ax<sup>2</sup> + bx + c = 0</strong>"),
+   div("Where x represents an unknown, and a, b, and c represent known numbers such that a is not equal to 0."),
    hr(),
    
 
@@ -19,8 +20,11 @@ ui <- shinyUI(fluidPage(theme=shinytheme("cosmo"),
         div("Enter coefficients:"),
           div(style="display:inline-block; width:80px", textInput("A", label = "A", value = 2)),
           div(style="display:inline-block; width:80px", textInput("B", label = "B", value = 18)),
-          div(style="display:inline-block; width:80px", textInput("C", label = "C", value = 5))
+          div(style="display:inline-block; width:80px", textInput("C", label = "C", value = 5)),
+    
+        div("Coefficients will be used to determine the Discriminant.")
                   ),
+
       
       mainPanel(
         
@@ -47,7 +51,13 @@ ui <- shinyUI(fluidPage(theme=shinytheme("cosmo"),
 
             div(h3("Visual representation"), plotOutput('plot'))
       )
-   )
+      
+   ),
+   
+  hr(),
+  
+  HTML("Github link - <a href='https://github.com/seozoidberg/for_shiny'>https://github.com/seozoidberg/for_shiny</a>")
+  
 ))
 
 server <- shinyServer(function(input, output) {
