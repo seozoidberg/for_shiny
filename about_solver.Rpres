@@ -1,0 +1,68 @@
+Developing Data Products Course Project
+========================================================
+author: Stanislav Dmitriev
+date: 2016.06.18
+autosize: true
+height: 900
+
+Quadratic equation solver
+========================================================
+The application "Solver" is built for Developing Data Products Course Project.
+
+This is presentation about it.
+
+This application will solve quadratic equation having the form $a * x^2 + b * x + c = 0$.  
+Where $x$ represents an unknown, and $a$, $b$, and $c$ represent known numbers such that a is not equal to 0.
+
+You should enter coefficients in the input fields.  
+Coefficients will be used to determine the Discriminant.
+
+
+Example
+========================================================
+
+Coefficients
+```{r}
+a <- 2
+b <- 18
+c <- 5
+```
+Discriminant
+```{r}
+d <- b^2 - 4*a*c
+```
+Solution
+```{r}
+x1 <- (-b+sqrt(d))/(2*a)
+x2 <- (-b-sqrt(d))/(2*a)
+```
+
+
+```{r echo=FALSE}
+x1
+x2
+```
+
+Visual representation
+========================================================
+After solving the equation application build a simple graph.
+
+```{r, echo=FALSE}
+library(ggplot2)
+mi <- x2-10
+ma <- x1+10
+
+f <- function(xx) a*xx^2 + b*xx + c
+  
+p <- ggplot(data.frame(x=c(mi, ma)), aes(x)) + stat_function(fun=f) + geom_vline(xintercept = c(x1, x2), colour = "red", linetype = "longdash") + geom_hline(yintercept = 0, colour = "red", linetype = "longdash")
+  print(p)
+
+```
+
+Link and Code
+========================================================
+
+Apllication is hosted on shinyapps.io - https://zoidberg.shinyapps.io/solver/
+
+Source code on Github - https://github.com/seozoidberg/for_shiny
+
